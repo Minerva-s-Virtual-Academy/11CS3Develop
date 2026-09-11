@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Consolidation & Gap Fill</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333333; margin: 0; padding: 20px; background-color: #f4f7f8; }
+        .card { background: #ffffff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 25px; border-top: 4px solid #007BA6; }
+        h1, h2 { color: #007BA6; }
+        .instruction { color: #00796B; font-weight: bold; margin-bottom: 15px; }
+        .keyword { color: #C62828; font-weight: bold; }
+        select { padding: 5px; font-size: 11pt; border-radius: 4px; border: 1px solid #007BA6; }
+        button { background-color: #007BA6; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-size: 12pt; margin-top: 15px; }
+        button:hover { background-color: #0056B3; }
+        .feedback { margin-top: 15px; padding: 15px; border-radius: 6px; font-weight: bold; display: none; }
+        .feedback.correct { background-color: #e0f2f1; color: #00796B; border: 1px solid #00796B; }
+        .feedback.incorrect { background-color: #ffebee; color: #C62828; border: 1px solid #C62828; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Task 1: Close-Gap Protocol Knowledge Check</h2>
+    <p class="instruction">Instruction: Select the correct term from each drop-down list to complete the passage.</p>
+    
+    <p>
+        When sending an email from a client to a mail server, the 
+        <select id="gap1">
+            <option value="wrong">HTTP</option>
+            <option value="correct">SMTP</option>
+            <option value="wrong">POP3</option>
+        </select> 
+        protocol is used. To download and remove email from a server to a local device, 
+        <select id="gap2">
+            <option value="correct">POP3</option>
+            <option value="wrong">IMAP</option>
+            <option value="wrong">HTTPS</option>
+        </select> 
+        is selected. If a user wishes to keep messages synchronised across multiple devices, they must use 
+        <select id="gap3">
+            <option value="wrong">FTP</option>
+            <option value="correct">IMAP</option>
+            <option value="wrong">SMTP</option>
+        </select>. 
+        All Web pages are transferred securely using 
+        <select id="gap4">
+            <option value="correct">HTTPS</option>
+            <option value="wrong">HTTP</option>
+            <option value="wrong">TCP</option>
+        </select>, which utilizes encryption.
+    </p>
+
+    <button onclick="checkGaps()">Check Passages</button>
+    <div id="gap-feedback" class="feedback"></div>
+</div>
+
+<script>
+    function checkGaps() {
+        const g1 = document.getElementById('gap1').value;
+        const g2 = document.getElementById('gap2').value;
+        const g3 = document.getElementById('gap3').value;
+        const g4 = document.getElementById('gap4').value;
+
+        const fb = document.getElementById('gap-feedback');
+        fb.style.display = 'block';
+
+        if (g1 === 'correct' && g2 === 'correct' && g3 === 'correct' && g4 === 'correct') {
+            fb.className = 'feedback correct';
+            fb.innerText = 'Well done! All protocol selections are correct.';
+        } else {
+            fb.className = 'feedback incorrect';
+            fb.innerText = 'Some choices are incorrect. Remember: SMTP sends emails, POP3 downloads/deletes, IMAP synchronises across devices, and HTTPS encrypts web traffic.';
+        }
+    }
+</script>
+
+</body>
+</html>
