@@ -1,79 +1,218 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Network Consolidation & Gap Fill</title>
-    <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333333; margin: 0; padding: 20px; background-color: #f4f7f8; }
-        .card { background: #ffffff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 25px; border-top: 4px solid #007BA6; }
-        h1, h2 { color: #007BA6; }
-        .instruction { color: #00796B; font-weight: bold; margin-bottom: 15px; }
-        .keyword { color: #C62828; font-weight: bold; }
-        select { padding: 5px; font-size: 11pt; border-radius: 4px; border: 1px solid #007BA6; }
-        button { background-color: #007BA6; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-size: 12pt; margin-top: 15px; }
-        button:hover { background-color: #0056B3; }
-        .feedback { margin-top: 15px; padding: 15px; border-radius: 6px; font-weight: bold; display: none; }
-        .feedback.correct { background-color: #e0f2f1; color: #00796B; border: 1px solid #00796B; }
-        .feedback.incorrect { background-color: #ffebee; color: #C62828; border: 1px solid #C62828; }
-    </style>
-</head>
-<body>
+<div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333333; max-width: 900px; margin: auto; padding: 20px;">
 
-<div class="card">
-    <h2>Task 1: Close-Gap Protocol Knowledge Check</h2>
-    <p class="instruction">Instruction: Select the correct term from each drop-down list to complete the passage.</p>
-    
-    <p>
-        When sending an email from a client to a mail server, the 
-        <select id="gap1">
-            <option value="wrong">HTTP</option>
-            <option value="correct">SMTP</option>
-            <option value="wrong">POP3</option>
-        </select> 
-        protocol is used. To download and remove email from a server to a local device, 
-        <select id="gap2">
-            <option value="correct">POP3</option>
-            <option value="wrong">IMAP</option>
-            <option value="wrong">HTTPS</option>
-        </select> 
-        is selected. If a user wishes to keep messages synchronised across multiple devices, they must use 
-        <select id="gap3">
-            <option value="wrong">FTP</option>
-            <option value="correct">IMAP</option>
-            <option value="wrong">SMTP</option>
-        </select>. 
-        All Web pages are transferred securely using 
-        <select id="gap4">
-            <option value="correct">HTTPS</option>
-            <option value="wrong">HTTP</option>
-            <option value="wrong">TCP</option>
-        </select>, which utilizes encryption.
-    </p>
+    <!-- Header Section -->
+    <header style="border-bottom: 3px solid #007BA6; padding-bottom: 10px; margin-bottom: 30px;">
+        <h1 style="color: #007BA6; margin-bottom: 5px;">Network Fundamentals &amp; Architectures</h1>
+        <p style="color: #00796B; font-weight: bold; font-style: italic;">Instruction: Complete the interactive consolidation activities below following our live lesson. (Est. Time: 30 mins)</p>
+    </header>
 
-    <button onclick="checkGaps()">Check Passages</button>
-    <div id="gap-feedback" class="feedback"></div>
+    <!-- Task 1: Close-Gap Recall Activity -->
+    <section style="margin-bottom: 40px; background-color: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #ddd;">
+        <h2 style="color: #007BA6; margin-top: 0;">1. Key Terms: Close-Gap Activity</h2>
+        <p style="color: #00796B;">Instruction: Read the passage and fill in the missing technical terms using the input boxes. Click <strong>Check Answers</strong> when complete.</p>
+        
+        <p style="font-size: 11pt; color: #333333; line-height: 1.8;">
+            A computer network connects multiple devices to share resources and data. A 
+            <input type="text" id="gap1" style="border: 1px solid #007BA6; padding: 4px; border-radius: 4px; width: 80px;" /> 
+            covers a small geographical area such as a single building, whereas a 
+            <input type="text" id="gap2" style="border: 1px solid #007BA6; padding: 4px; border-radius: 4px; width: 80px;" /> 
+            connects devices over a large geographical distance and often relies on third-party telecommunications. Within a network, data transmission speeds are measured in 
+            <input type="text" id="gap3" style="border: 1px solid #007BA6; padding: 4px; border-radius: 4px; width: 130px;" />. 
+            In a 
+            <input type="text" id="gap4" style="border: 1px solid #007BA6; padding: 4px; border-radius: 4px; width: 110px;" /> 
+            network, central devices manage security and request handling, while in a 
+            <input type="text" id="gap5" style="border: 1px solid #007BA6; padding: 4px; border-radius: 4px; width: 110px;" /> 
+            network, all nodes share equal responsibility.
+        </p>
+
+        <button onclick="checkCloseGap()" style="background-color: #007BA6; color: #ffffff; border: none; padding: 10px 18px; font-weight: bold; border-radius: 4px; cursor: pointer; margin-top: 10px;">Check Answers</button>
+        
+        <div id="gap-feedback" style="margin-top: 15px; font-weight: bold; display: none;"></div>
+    </section>
+
+    <!-- Task 2: Network Coverage Types (LAN, WAN, PAN) -->
+    <section style="margin-bottom: 40px; background-color: #ffffff; padding: 20px; border-radius: 8px; border: 1px solid #007BA6;">
+        <h2 style="color: #007BA6; margin-top: 0;">2. Network Geographies: LAN, WAN &amp; PAN</h2>
+        <p style="color: #00796B;">Instruction: Select the correct network classification for each real-world scenario from the drop-down menus.</p>
+
+        <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+            <thead>
+                <tr style="background-color: #eef7fa; border-bottom: 2px solid #007BA6; text-align: left;">
+                    <th style="padding: 10px; color: #007BA6;">Scenario</th>
+                    <th style="padding: 10px; color: #007BA6;">Network Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;">
+                    <td style="padding: 10px;">Connecting a wireless smartwatch to a smartphone via Bluetooth.</td>
+                    <td style="padding: 10px;">
+                        <select id="net-scen-1" style="padding: 5px; border-radius: 4px; border: 1px solid #ccc;">
+                            <option value="">-- Choose --</option>
+                            <option value="PAN">PAN</option>
+                            <option value="LAN">LAN</option>
+                            <option value="WAN">WAN</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr style="border-bottom: 1px solid #eee;">
+                    <td style="padding: 10px;">Linking computer workstations across multiple international offices.</td>
+                    <td style="padding: 10px;">
+                        <select id="net-scen-2" style="padding: 5px; border-radius: 4px; border: 1px solid #ccc;">
+                            <option value="">-- Choose --</option>
+                            <option value="PAN">PAN</option>
+                            <option value="LAN">LAN</option>
+                            <option value="WAN">WAN</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr style="border-bottom: 1px solid #eee;">
+                    <td style="padding: 10px;">Connecting computers, printers, and switches inside a single school building.</td>
+                    <td style="padding: 10px;">
+                        <select id="net-scen-3" style="padding: 5px; border-radius: 4px; border: 1px solid #ccc;">
+                            <option value="">-- Choose --</option>
+                            <option value="PAN">PAN</option>
+                            <option value="LAN">LAN</option>
+                            <option value="WAN">WAN</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button onclick="checkNetworkTypes()" style="background-color: #007BA6; color: #ffffff; border: none; padding: 10px 18px; font-weight: bold; border-radius: 4px; cursor: pointer; margin-top: 15px;">Verify Selections</button>
+        <div id="net-feedback" style="margin-top: 15px; font-weight: bold; display: none;"></div>
+    </section>
+
+    <!-- Task 3: Network Transmission Speeds -->
+    <section style="margin-bottom: 40px; background-color: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #ddd;">
+        <h2 style="color: #007BA6; margin-top: 0;">3. Network Speeds &amp; Calculations</h2>
+        <p style="color: #00796B;">Instruction: Review the transmission units and complete the interactive conversion and speed calculation task.</p>
+
+        <div style="background-color: #eef7fa; padding: 15px; border-radius: 8px; border-left: 5px solid #007BA6; margin-bottom: 20px;">
+            <p style="margin: 0; font-size: 10pt;">
+                <strong>Key Rule:</strong> Network data speeds are measured in <strong style="color: #C62828;">bits per second (bps)</strong>, including <strong style="color: #C62828;">Megabits per second (Mbps)</strong> and <strong style="color: #C62828;">Gigabits per second (Gbps)</strong>. Note that $1 \text{ Gbps} = 1000 \text{ Mbps}$.
+            </p>
+        </div>
+
+        <p><strong>Question:</strong> A office network transfers data at a rate of <strong style="color: #C62828;">2 Gbps</strong>. Convert this value to <strong style="color: #C62828;">Mbps</strong>, and calculate how many Megabits can be transferred in <strong style="color: #C62828;">5 seconds</strong>.</p>
+
+        <div style="margin-bottom: 15px;">
+            <label style="display: block; margin-bottom: 5px;">Speed in Mbps:</label>
+            <input type="number" id="speed-mbps" placeholder="e.g. 2000" style="padding: 6px; border: 1px solid #ccc; border-radius: 4px; width: 200px;" />
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label style="display: block; margin-bottom: 5px;">Total Megabits transferred in 5 seconds:</label>
+            <input type="number" id="speed-total" placeholder="e.g. 10000" style="padding: 6px; border: 1px solid #ccc; border-radius: 4px; width: 200px;" />
+        </div>
+
+        <button onclick="checkSpeedCalc()" style="background-color: #007BA6; color: #ffffff; border: none; padding: 10px 18px; font-weight: bold; border-radius: 4px; cursor: pointer;">Calculate &amp; Check</button>
+        <div id="speed-feedback" style="margin-top: 15px; font-weight: bold; display: none;"></div>
+    </section>
+
+    <!-- Task 4: Client-Server vs Peer-to-Peer Usage Models -->
+    <section style="margin-bottom: 40px; background-color: #ffffff; padding: 20px; border-radius: 8px; border: 1px solid #007BA6;">
+        <h2 style="color: #007BA6; margin-top: 0;">4. Network Usage Models: Client-Server vs Peer-to-Peer</h2>
+        <p style="color: #00796B;">Instruction: Categorise each statement by clicking the correct model button.</p>
+
+        <div id="p2p-container">
+            <div style="background: #f9f9f9; padding: 15px; border-radius: 6px; margin-bottom: 12px; border-left: 4px solid #007BA6;">
+                <p style="margin: 0 0 10px 0;">1. Centralised backup systems store all user files on a main machine.</p>
+                <button onclick="checkModel(1, 'CS')" style="background-color: #007BA6; color: #white; border: none; padding: 6px 12px; border-radius: 4px; color: #fff; cursor: pointer; margin-right: 8px;">Client-Server</button>
+                <button onclick="checkModel(1, 'P2P')" style="background-color: #00796B; color: #white; border: none; padding: 6px 12px; border-radius: 4px; color: #fff; cursor: pointer;">Peer-to-Peer</button>
+                <span id="model-fb-1" style="margin-left: 10px; font-weight: bold;"></span>
+            </div>
+
+            <div style="background: #f9f9f9; padding: 15px; border-radius: 6px; margin-bottom: 12px; border-left: 4px solid #007BA6;">
+                <p style="margin: 0 0 10px 0;">2. Every machine on the network can act as both a client and a host server.</p>
+                <button onclick="checkModel(2, 'CS')" style="background-color: #007BA6; color: #white; border: none; padding: 6px 12px; border-radius: 4px; color: #fff; cursor: pointer; margin-right: 8px;">Client-Server</button>
+                <button onclick="checkModel(2, 'P2P')" style="background-color: #00796B; color: #white; border: none; padding: 6px 12px; border-radius: 4px; color: #fff; cursor: pointer;">Peer-to-Peer</button>
+                <span id="model-fb-2" style="margin-left: 10px; font-weight: bold;"></span>
+            </div>
+
+            <div style="background: #f9f9f9; padding: 15px; border-radius: 6px; margin-bottom: 12px; border-left: 4px solid #007BA6;">
+                <p style="margin: 0 0 10px 0;">3. If the central node fails, connected client devices lose access to network services.</p>
+                <button onclick="checkModel(3, 'CS')" style="background-color: #007BA6; color: #white; border: none; padding: 6px 12px; border-radius: 4px; color: #fff; cursor: pointer; margin-right: 8px;">Client-Server</button>
+                <button onclick="checkModel(3, 'P2P')" style="background-color: #00796B; color: #white; border: none; padding: 6px 12px; border-radius: 4px; color: #fff; cursor: pointer;">Peer-to-Peer</button>
+                <span id="model-fb-3" style="margin-left: 10px; font-weight: bold;"></span>
+            </div>
+        </div>
+    </section>
+
 </div>
 
+<!-- Client-side Interactive Logic -->
 <script>
-    function checkGaps() {
-        const g1 = document.getElementById('gap1').value;
-        const g2 = document.getElementById('gap2').value;
-        const g3 = document.getElementById('gap3').value;
-        const g4 = document.getElementById('gap4').value;
+    // Task 1 Logic
+    function checkCloseGap() {
+        const g1 = document.getElementById('gap1').value.trim().toUpperCase();
+        const g2 = document.getElementById('gap2').value.trim().toUpperCase();
+        const g3 = document.getElementById('gap3').value.trim().toLowerCase();
+        const g4 = document.getElementById('gap4').value.trim().toUpperCase();
+        const g5 = document.getElementById('gap5').value.trim().toUpperCase();
 
         const fb = document.getElementById('gap-feedback');
         fb.style.display = 'block';
 
-        if (g1 === 'correct' && g2 === 'correct' && g3 === 'correct' && g4 === 'correct') {
-            fb.className = 'feedback correct';
-            fb.innerText = 'Well done! All protocol selections are correct.';
+        if (g1 === 'LAN' && g2 === 'WAN' && (g3 === 'bits per second' || g3 === 'bps') && (g4 === 'CLIENT-SERVER' || g4 === 'CLIENT SERVER') && (g5 === 'PEER-TO-PEER' || g5 === 'PEER TO PEER' || g5 === 'P2P')) {
+            fb.style.color = '#00796B';
+            fb.innerHTML = '✔ Excellent! All key definitions correctly identified.';
         } else {
-            fb.className = 'feedback incorrect';
-            fb.innerText = 'Some choices are incorrect. Remember: SMTP sends emails, POP3 downloads/deletes, IMAP synchronises across devices, and HTTPS encrypts web traffic.';
+            fb.style.color = '#C62828';
+            fb.innerHTML = '✖ Some terms are incorrect. Remember: LAN (Local Area), WAN (Wide Area), speeds in bits per second, Client-Server, and Peer-to-Peer.';
+        }
+    }
+
+    // Task 2 Logic
+    function checkNetworkTypes() {
+        const s1 = document.getElementById('net-scen-1').value;
+        const s2 = document.getElementById('net-scen-2').value;
+        const s3 = document.getElementById('net-scen-3').value;
+
+        const fb = document.getElementById('net-feedback');
+        fb.style.display = 'block';
+
+        if (s1 === 'PAN' && s2 === 'WAN' && s3 === 'LAN') {
+            fb.style.color = '#00796B';
+            fb.innerHTML = '✔ All network types matched correctly!';
+        } else {
+            fb.style.color = '#C62828';
+            fb.innerHTML = '✖ Incorrect classifications found. PAN = Personal (Bluetooth), WAN = Wide geographical area, LAN = Local single site.';
+        }
+    }
+
+    // Task 3 Logic
+    function checkSpeedCalc() {
+        const mbps = parseFloat(document.getElementById('speed-mbps').value);
+        const total = parseFloat(document.getElementById('speed-total').value);
+
+        const fb = document.getElementById('speed-feedback');
+        fb.style.display = 'block';
+
+        if (mbps === 2000 && total === 10000) {
+            fb.style.color = '#00796B';
+            fb.innerHTML = '✔ Correct calculation! 2 Gbps = 2000 Mbps. Over 5 seconds: 2000 Mbps × 5 = 10,000 Megabits.';
+        } else {
+            fb.style.color = '#C62828';
+            fb.innerHTML = '✖ Incorrect calculation. Check your conversions: multiply Gbps by 1000 to get Mbps, then multiply by time (5s).';
+        }
+    }
+
+    // Task 4 Logic
+    function checkModel(qNum, selected) {
+        const fb = document.getElementById('model-fb-' + qNum);
+        let correct = false;
+
+        if (qNum === 1 && selected === 'CS') correct = true;
+        if (qNum === 2 && selected === 'P2P') correct = true;
+        if (qNum === 3 && selected === 'CS') correct = true;
+
+        if (correct) {
+            fb.style.color = '#00796B';
+            fb.innerHTML = '✔ Correct!';
+        } else {
+            fb.style.color = '#C62828';
+            fb.innerHTML = '✖ Incorrect - try again.';
         }
     }
 </script>
-
-</body>
-</html>
